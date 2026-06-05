@@ -12,7 +12,7 @@ In simple terms: this is a shared library of practical AI helpers for people inv
 
 This marketplace is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](LICENCE.md).
 
-❤️ This project was created and is maintained by volunteers, including people who spend their time and risk their lives so others can live.
+❤️ This project was created and is maintained by volunteers for people who spend their time and risk their lives so others can live.
 
 It is shared for humanitarian, preparedness, response, training, and coordination purposes. It is **not meant for commercial usage**.
 
