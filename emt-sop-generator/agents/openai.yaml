@@ -1,4 +1,0 @@
-interface:
-  display_name: "EMT SOP Generator"
-  short_description: "Draft field-ready SOPs for any EMT type"
-  default_prompt: "Use $emt-sop-generator to draft an EMT SOP in Markdown after asking for the SOP language and EMT type."
