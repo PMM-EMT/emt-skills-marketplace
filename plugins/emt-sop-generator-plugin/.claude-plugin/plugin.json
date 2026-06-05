@@ -1,0 +1,22 @@
+{
+  "name": "emt-sop-generator-plugin",
+  "description": "Adds an EMT SOP generator skill for field-ready Emergency Medical Team standard operating procedures.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Bartlomiej Banachowicz (PMM EMT)",
+    "email": "bartlomiej.banachowicz@emt.pmm.org.pl"
+  },
+  "homepage": "https://github.com/PMM-EMT/emt-skills-marketplace",
+  "repository": "https://github.com/PMM-EMT/emt-skills-marketplace",
+  "license": "CC-BY-NC-SA-4.0",
+  "keywords": [
+    "EMT",
+    "Emergency Medical Team",
+    "SOP",
+    "Standard Operating Procedure",
+    "WHO",
+    "World Health Organization",
+    "UCPM",
+    "Union Civil Protection Mechanism"
+  ]
+}
