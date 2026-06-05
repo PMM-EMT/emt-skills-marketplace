@@ -2,9 +2,10 @@
   "$schema": "https://code.claude.com/schema/marketplace.schema.json",
   "name": "emt-skills-marketplace",
   "owner": {
-    "name": "PMM-EMT"
+    "name": "Polish Medical Mission - Emergency Medical Team",
+    "email": "it@emt.pmm.org.pl"
   },
-  "description": "Humanitarian AI skills for Emergency Medical Teams working within WHO EMT and Union Civil Protection Mechanism frameworks.",
+  "description": "AI skills for Emergency Medical Teams working within WHO and Union Civil Protection Mechanism frameworks.",
   "plugins": [
     {
       "name": "emt-sop-generator-plugin",
@@ -12,25 +13,32 @@
       "displayName": "EMT SOP Generator",
       "description": "Draft, revise, and quality-check field-ready SOPs for Emergency Medical Teams.",
       "author": {
-        "name": "PMM-EMT volunteers"
+        "name": "Bartlomiej Banachowicz (PMM EMT)",
+        "email": "bartlomiej.banachowicz@emt.pmm.org.pl"
       },
       "homepage": "https://github.com/PMM-EMT/emt-skills-marketplace",
       "repository": "https://github.com/PMM-EMT/emt-skills-marketplace",
       "license": "CC-BY-NC-SA-4.0",
       "keywords": [
-        "emt",
-        "emergency-medical-teams",
-        "sop",
-        "humanitarian",
-        "who",
-        "ucpm"
+        "EMT",
+        "Emergency Medical Team",
+        "SOP",
+        "Standard Operating Procedure",
+        "WHO",
+        "World Health Organization",
+        "UCPM",
+        "Union Civil Protection Mechanism"
       ],
-      "category": "healthcare",
+      "category": "Civil Protection",
       "tags": [
-        "emt",
-        "sop",
-        "disaster-response",
-        "humanitarian"
+        "EMT",
+        "Emergency Medical Team",
+        "SOP",
+        "Standard Operating Procedure",
+        "WHO",
+        "World Health Organization",
+        "UCPM",
+        "Union Civil Protection Mechanism"
       ]
     }
   ]
