@@ -97,10 +97,14 @@ Simplest option inside Claude Code:
 
 ```text
 /plugin marketplace add PMM-EMT/emt-skills-marketplace
-/plugin
+/plugin install emt-sop-generator-plugin@emt-skills-marketplace
 ```
 
-Then open the marketplace, choose the EMT skills marketplace, and install the skill or plugin you need.
+After installation, call the skill with its plugin name:
+
+```text
+/emt-sop-generator-plugin:emt-sop-generator
+```
 
 If you prefer the full repository address:
 
@@ -108,7 +112,7 @@ If you prefer the full repository address:
 /plugin marketplace add https://github.com/PMM-EMT/emt-skills-marketplace.git
 ```
 
-After installing, reload plugins:
+After installing, reload plugins if Claude Code does not show the new plugin immediately:
 
 ```text
 /reload-plugins
@@ -124,14 +128,14 @@ For personal use across all projects:
 
 ```bash
 mkdir -p ~/.claude/skills
-cp -R emt-sop-generator ~/.claude/skills/
+cp -R plugins/emt-sop-generator-plugin/skills/emt-sop-generator ~/.claude/skills/
 ```
 
 For one project only:
 
 ```bash
 mkdir -p /path/to/project/.claude/skills
-cp -R emt-sop-generator /path/to/project/.claude/skills/
+cp -R plugins/emt-sop-generator-plugin/skills/emt-sop-generator /path/to/project/.claude/skills/
 ```
 
 Claude Code can use a skill automatically when your request matches the skill description. You can also ask for it by name, for example:
@@ -139,6 +143,15 @@ Claude Code can use a skill automatically when your request matches the skill de
 ```text
 Use the emt-sop-generator skill to draft an EMT SOP.
 ```
+
+For maintainers, validate the marketplace and plugin before release:
+
+```bash
+claude plugin validate .
+claude plugin validate ./plugins/emt-sop-generator-plugin
+```
+
+The plugin uses a semantic version in `plugin.json`. Bump that version whenever releasing plugin changes so existing users receive updates.
 
 Official help pages:
 
