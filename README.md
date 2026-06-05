@@ -29,11 +29,13 @@ Before using any skill in real operations:
 
 A **skill** is a small package of instructions that helps an AI assistant do a specific job better.
 
-A **marketplace** is a collection of skills that an AI tool can browse or install from.
+A **plugin** is an installable package that can contain one or more skills.
+
+A **marketplace** is a collection of plugins that Claude Code can browse or install from.
 
 A **GitHub repository** is the public online folder where this marketplace is stored.
 
-Use this public marketplace address when your AI tool asks for a repository, marketplace, or GitHub source:
+Use this public marketplace address when Claude Code asks for a repository, marketplace, or GitHub source:
 
 ```text
 https://github.com/PMM-EMT/emt-skills-marketplace.git
@@ -47,11 +49,11 @@ PMM-EMT/emt-skills-marketplace
 
 ### ✅ Recommended option
 
-If your AI tool has an option like **Add marketplace**, **Add from GitHub**, **Add repository**, or **Install plugin from repository**, use that first.
+If Claude Code offers **Add marketplace**, **Add from GitHub**, **Add repository**, or **Install plugin from repository**, use that first.
 
-That is usually the simplest option because the tool can connect directly to this public GitHub marketplace and keep it easier to update later.
+That is usually the simplest option because Claude Code can connect directly to this public GitHub marketplace and keep it easier to update later.
 
-If your tool does not offer that option, use the manual fallback described below for your tool.
+If you are using Claude in the browser or Claude Desktop and do not see marketplace installation, use the manual upload option below.
 
 ### 🟣 Claude and Claude Desktop
 
@@ -69,17 +71,18 @@ Simplest option:
 https://github.com/PMM-EMT/emt-skills-marketplace.git
 ```
 
-6. Install the skill or plugin you want to use.
+6. Install the plugin you want to use.
 
 If you do not see an option to add a marketplace, use the manual upload option:
 
 1. Open the repository on GitHub.
 2. Click `Code`, then `Download ZIP`.
 3. Unzip the downloaded file.
-4. Create a ZIP file from the skill folder you want to use, for example `emt-sop-generator`. On most computers, you can right-click the folder and choose `Compress` or `Send to ZIP`.
-5. In Claude, go to `Customize > Skills`.
-6. Choose `Create skill` or `Upload a skill`.
-7. Upload the ZIP file and turn the skill on.
+4. Open `plugins/emt-sop-generator-plugin/skills/`.
+5. Create a ZIP file from the skill folder you want to use, for example `emt-sop-generator`. On most computers, you can right-click the folder and choose `Compress` or `Send to ZIP`.
+6. In Claude, go to `Customize > Skills`.
+7. Choose `Create skill` or `Upload a skill`.
+8. Upload the ZIP file and turn the skill on.
 
 Claude may then use the skill automatically when your request matches what the skill is designed to do.
 
@@ -158,59 +161,10 @@ Official help pages:
 - [Claude Code plugin marketplaces](https://code.claude.com/docs/en/discover-plugins)
 - [Claude Code Agent Skills](https://code.claude.com/docs/en/skills)
 
-### 🤖 OpenAI Codex
-
-Use this if you work with OpenAI Codex.
-
-Simplest option in Codex CLI:
-
-```bash
-codex plugin marketplace add PMM-EMT/emt-skills-marketplace
-```
-
-Then open the Codex plugin directory, choose this marketplace as the source, review what is available, and install what you need.
-
-You can check that Codex sees the marketplace with:
-
-```bash
-codex plugin marketplace list
-```
-
-Manual fallback:
-
-1. Download or clone this repository.
-2. Open a terminal in the downloaded `emt-skills-marketplace` folder.
-3. Copy the skill folder into your Codex skills folder.
-
-For personal use across Codex workspaces:
-
-```bash
-mkdir -p ~/.agents/skills
-cp -R emt-sop-generator ~/.agents/skills/
-```
-
-For one repository only:
-
-```bash
-mkdir -p /path/to/project/.agents/skills
-cp -R emt-sop-generator /path/to/project/.agents/skills/
-```
-
-Codex can use a skill automatically when your request matches the skill description. You can also mention a skill directly, for example:
-
-```text
-Use $emt-sop-generator to draft an EMT SOP in Markdown.
-```
-
-Official help pages:
-
-- [OpenAI Codex Agent Skills](https://developers.openai.com/codex/skills.md)
-- [OpenAI Codex plugin marketplaces](https://developers.openai.com/codex/plugins/build.md)
-
 ### 🧭 If you are not sure what to choose
 
-Start with your tool's **marketplace** or **GitHub repository** option.
+Start with Claude Code's **marketplace** or **GitHub repository** option.
 
-If that does not work, use the manual fallback for your tool.
+If that does not work, use the manual upload fallback for Claude or Claude Desktop.
 
 If you are supporting an EMT and are unsure whether a skill is appropriate for operational use, ask your team lead, clinical lead, information management lead, or deployment coordinator to review it before use.
