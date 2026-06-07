@@ -8,8 +8,8 @@
   "description": "AI skills for Emergency Medical Teams working within WHO and Union Civil Protection Mechanism frameworks.",
   "plugins": [
     {
-      "name": "emt-sop-generator-plugin",
-      "source": "./plugins/emt-sop-generator-plugin",
+      "name": "emt-sop-generator",
+      "source": "./plugins/emt-sop-generator",
       "displayName": "EMT SOP Generator",
       "description": "Draft, revise, and quality-check field-ready SOPs for Emergency Medical Teams.",
       "author": {

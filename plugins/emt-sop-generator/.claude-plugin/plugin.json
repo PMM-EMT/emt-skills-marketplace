@@ -1,6 +1,6 @@
 {
-  "name": "emt-sop-generator-plugin",
-  "description": "Adds an EMT SOP generator skill for field-ready Emergency Medical Team standard operating procedures.",
+  "name": "emt-sop-generator",
+  "description": "Adds EMT SOP writing and review skills for field-ready Emergency Medical Team standard operating procedures.",
   "version": "0.1.0",
   "author": {
     "name": "Bartlomiej Banachowicz (PMM EMT)",
