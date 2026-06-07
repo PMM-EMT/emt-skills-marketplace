@@ -25,19 +25,22 @@ In the SOP output, translate these seven headings into the requested language an
 
 ## Reference Loading
 
-Read `references/emt_sop_ai_agent_knowledge_base.md` before drafting, revising, or reviewing a complete SOP. Use it for generic EMT SOP architecture, required metadata, language-independent section definitions, writing rules, evidence artifacts, escalation logic, legal-operational mapping, and validation.
+Read `references/emt_high_level_context.md` before drafting, revising, or reviewing a complete SOP. Use it for EMT domain context, EMT types, guiding principles, operating logic, coordination, records, reporting, operational requirements, public health role, operating constraints, terminology, and abbreviations.
+
+Read `references/emt_sop_structure.md` before drafting, revising, or reviewing a complete SOP. Use it for document structure, section format, section purpose, and section-level rules.
 
 For the requested EMT type, ask the user for the team's official capability statement, approved scope, exclusions, staffing model, deployment configuration, and any local authorization that changes the baseline EMT type capability.
 
 For narrow edits to an existing SOP, read only the relevant reference sections when possible. Useful search headings include:
 
-- `Canonical SOP sections`
-- `Intake data set`
-- `Procedure step template`
-- `Evidence-of-action rule`
-- `Legal-operational rule`
-- `Validation checklist`
-- `EMT type and capability controls`
+- `EMT Types` in `emt_high_level_context.md`
+- `Operating Logic` in `emt_high_level_context.md`
+- `Records & Reporting` in `emt_high_level_context.md`
+- `Metadata Table` in `emt_sop_structure.md`
+- `Procedure Description` in `emt_sop_structure.md`
+- `Escalation` in `emt_sop_structure.md`
+- `Completion Criteria` in `emt_sop_structure.md`
+
 
 ## Intake Workflow
 
@@ -56,16 +59,20 @@ If data is incomplete, ask concise follow-up questions grouped by section. Conti
 
 ## Drafting Rules
 
-Keep every SOP within the approved capability of the specified EMT type. Do not authorize clinical services, procedures, admissions, diagnostics, surgeries, critical care, blood products, specialist care, transport, or public-health functions unless they are inside the team type, specialist cell mandate, or locally approved scope provided by the user.
+Keep every SOP within the approved capability of the specified EMT type. Derive the permitted boundary from user-provided team documents, not from generic EMT type labels alone. Ask for the team's official capability statement, approved clinical and operational scope, exclusions, staffing model, site or mobile operating model, referral and escalation pathways, authorized diagnostics, procedures, medicines, equipment, services, and host-country or mission-approved scope changes.
+
+Do not authorize clinical services, procedures, admissions, diagnostics, surgeries, critical care, blood products, specialist care, transport, public-health functions, or operational activities unless they are inside the team type, specialist mandate, local authorization, staff competence, equipment, medicine availability, and assigned tasking.
 
 Use role-bound, evidence-backed instructions:
 
 - Put the responsible role before each safety-critical action.
 - Define the trigger, action, output or evidence, form or appendix, escalation path, and completion criterion for each critical workflow.
+- Select evidence artifacts that match the workflow and documentation system, such as activation logs, readiness checklists, rosters, patient records, triage tags, referral forms, pharmacy logs, stock cards, cold-chain logs, waste logs, daily reports, incident reports, handover checklists, and demobilization records.
 - Use numbered steps in `Procedure description`.
 - Use `If...then...` decision logic for thresholds and exceptions.
 - Use `Do not...unless...` for safety boundaries.
 - Use tables for role ownership, legal matrices, forms, escalation thresholds, and appendices.
+- For each escalation threshold, identify the triggering condition, responsible role, escalation recipient, required evidence, and immediate operational limit or workaround.
 - Avoid vague terms such as `appropriate staff`, `if necessary`, `regularly`, or `according to local procedures` unless the role, threshold, frequency, authority, or source is named.
 
 ## Terms And Roles Discipline
@@ -101,6 +108,6 @@ Before delivering a complete SOP, verify:
 - Critical actions are assigned to defined roles.
 - New terms and roles are added to definitions or responsibilities.
 - Appendices are named and referenced where used.
-- Legal and regulatory requirements are mapped to operational implication, responsible role, and evidence when the SOP has workflow-specific legal requirements.
+- Legal and regulatory requirements are mapped to operational implication, responsible role, and evidence when the SOP has workflow-specific legal requirements; if no SOP-specific legal controls apply, the SOP says so and references the baseline authorization or governance document if provided.
 - The SOP does not exceed the specified EMT type or locally approved capability.
 - Independent review findings have been summarized for the user.
