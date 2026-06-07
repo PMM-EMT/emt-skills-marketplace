@@ -41,7 +41,6 @@ For narrow edits to an existing SOP, read only the relevant reference sections w
 - `Escalation` in `emt_sop_structure.md`
 - `Completion Criteria` in `emt_sop_structure.md`
 
-
 ## Intake Workflow
 
 Before drafting a complete SOP, ask for missing required data instead of inventing it. Always ask for:
@@ -59,6 +58,8 @@ If data is incomplete, ask concise follow-up questions grouped by section. Conti
 
 ## Drafting Rules
 
+Keep each SOP bound to one primary workflow and deployment phase. If setup, daily operation, maintenance, shift handover, demobilization, or incident follow-up create different triggers, evidence, roles, or escalation thresholds, split them into separate SOPs or working drafts instead of mixing them into one procedure.
+
 Keep every SOP within the approved capability of the specified EMT type. Derive the permitted boundary from user-provided team documents, not from generic EMT type labels alone. Ask for the team's official capability statement, approved clinical and operational scope, exclusions, staffing model, site or mobile operating model, referral and escalation pathways, authorized diagnostics, procedures, medicines, equipment, services, and host-country or mission-approved scope changes.
 
 Do not authorize clinical services, procedures, admissions, diagnostics, surgeries, critical care, blood products, specialist care, transport, public-health functions, or operational activities unless they are inside the team type, specialist mandate, local authorization, staff competence, equipment, medicine availability, and assigned tasking.
@@ -72,7 +73,9 @@ Use role-bound, evidence-backed instructions:
 - Use `If...then...` decision logic for thresholds and exceptions.
 - Use `Do not...unless...` for safety boundaries.
 - Use tables for role ownership, legal matrices, forms, escalation thresholds, and appendices.
+- Keep operational steps focused on action, testing, recording status, and documenting results. Put repeated escalation/reporting paths in the escalation subsection instead of duplicating them in setup steps, checks, role descriptions, appendices, or handover text.
 - For each escalation threshold, identify the triggering condition, responsible role, escalation recipient, required evidence, and immediate operational limit or workaround.
+- Match escalation thresholds to the SOP phase. Setup SOPs should escalate setup limitations and readiness blockers; maintenance or operations SOPs should carry broader degradation, outage, incident follow-up, and shift handover escalation policies.
 - Avoid vague terms such as `appropriate staff`, `if necessary`, `regularly`, or `according to local procedures` unless the role, threshold, frequency, authority, or source is named.
 
 ## Terms And Roles Discipline
@@ -83,6 +86,33 @@ Maintain unambiguous vocabulary throughout the SOP.
 - Reference defined terms and role names exactly as written in `Terms and definitions` and `Roles and responsibilities`, translated consistently into the SOP language.
 - If a new term, acronym, authority, form, or role appears while drafting a later section, add it to the appropriate definitions or roles section before finalizing.
 - Do not use informal synonyms for defined roles. For example, if `Clinical Lead` is defined, keep using `Clinical Lead`; do not switch to `clinical supervisor`, `medical lead`, or `lead doctor` unless those are separately defined.
+
+## Source And Appendix Discipline
+
+Use source material and appendices deliberately.
+
+- Capture baseline assumptions from user-provided source material before drafting, including team type, staffing model, operating model, minimum equipment or systems, redundancy assumptions, local authorization dependencies, and known exclusions.
+- When a technical, clinical, security, logistics, or legal requirement comes from a source pack or guidebook, convert it into concise field actions, parameters, evidence, or appendix rows. Do not bury source-derived controls in long explanatory paragraphs.
+- Keep main SOP procedures concise. Move long resource lists, detailed technical controls, logs, checklists, contact templates, handover tools, and source-backed requirement tables into appendices.
+- Order appendices by first use in the main SOP, keep appendix letters and file names synchronized, and update every in-text reference when appendix order changes.
+- Do not hide mandatory actions only in appendices. The main procedure must tell staff when to use each appendix.
+- Use generic system names when product names or local tools are not essential, such as `local servers running approved team applications`; use product names only when the SOP specifically depends on that product, authorization, configuration, or test.
+
+## Coordination And Contact Discipline
+
+Make coordination and contact requirements operational.
+
+- Define coordination bodies, technical coordination structures, diplomatic contact points, and local authorities when they appear in the SOP, including mission-specific bodies such as EMTCC, ETC, UCPMT, MoH, EOC, embassies, EU delegation, or equivalent local structures.
+- Add contact placeholders when the procedure depends on reaching coordination, referral, security, emergency, or diplomatic contacts.
+- Keep contact templates in appendices unless a small contact list is essential in the procedure hot path.
+
+## Segmentation And Security Pattern
+
+For ICT, data, communications, or other system workflows, separate high-level operational requirements from detailed controls.
+
+- Keep essential safety or separation rules in the main SOP, such as separating clinical-administrative systems from staff welfare or private-use systems.
+- Move detailed cybersecurity, device, account, credential, incident, and technical parameter requirements into an appendix when they would overload the main procedure.
+- State incident documentation requirements for data breach, lost device, unauthorized access, or similar events when the workflow creates data or network risk.
 
 ## Review Before Final Output
 
@@ -107,7 +137,9 @@ Before delivering a complete SOP, verify:
 - Required metadata is present or unresolved data is clearly requested.
 - Critical actions are assigned to defined roles.
 - New terms and roles are added to definitions or responsibilities.
-- Appendices are named and referenced where used.
+- Appendices are named, ordered by first use, synchronized with file names, and referenced at the point of use.
+- Detailed resource lists, technical controls, logs, checklists, contact templates, handover tools, and source-backed requirement tables are moved to appendices unless they are essential to the procedure hot path.
+- Escalation paths are centralized in the escalation subsection and not duplicated across role descriptions, procedural steps, appendices, or handover text.
 - Legal and regulatory requirements are mapped to operational implication, responsible role, and evidence when the SOP has workflow-specific legal requirements; if no SOP-specific legal controls apply, the SOP says so and references the baseline authorization or governance document if provided.
 - The SOP does not exceed the specified EMT type or locally approved capability.
 - Independent review findings have been summarized for the user.
