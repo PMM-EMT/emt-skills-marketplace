@@ -1,8 +1,9 @@
 ---
-description: Generate, revise, and quality-check Standard Operating Procedures for WHO Emergency Medical Teams of any EMT type, including Type 1 Mobile, Type 1 Fixed, Type 2, Type 3, and specialist care teams or cells. Use when Claude needs to draft field-ready EMT SOPs, adapt SOP content to mission data and team capability, ask for missing required SOP inputs, enforce mandatory SOP sections in the requested output language, maintain defined terms and roles, enforce EMT capability limits from user-provided team scope, or review SOP clarity, structure, readability, legal-operational mapping, and scope boundaries.
+name: emt-sop-write
+description: Generate and revise Standard Operating Procedures for WHO Emergency Medical Teams of any EMT type, including Type 1 Mobile, Type 1 Fixed, Type 2, Type 3, and specialist care teams or cells. Use when Claude needs to draft field-ready EMT SOPs, adapt SOP content to mission data and team capability, ask for missing required SOP inputs, enforce mandatory SOP sections in the requested output language, maintain defined terms and roles, or enforce EMT capability limits from user-provided team scope.
 ---
 
-# EMT SOP Generator
+# EMT SOP Write
 
 ## Core Contract
 

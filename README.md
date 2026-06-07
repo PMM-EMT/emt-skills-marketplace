@@ -78,8 +78,8 @@ If you do not see an option to add a marketplace, use the manual upload option:
 1. Open the repository on GitHub.
 2. Click `Code`, then `Download ZIP`.
 3. Unzip the downloaded file.
-4. Open `plugins/emt-sop-generator-plugin/skills/`.
-5. Create a ZIP file from the skill folder you want to use, for example `emt-sop-generator`. On most computers, you can right-click the folder and choose `Compress` or `Send to ZIP`.
+4. Open `plugins/emt-sop-generator/skills/`.
+5. Create a ZIP file from the skill folder you want to use, for example `emt-sop-write`. On most computers, you can right-click the folder and choose `Compress` or `Send to ZIP`.
 6. In Claude, go to `Customize > Skills`.
 7. Choose `Create skill` or `Upload a skill`.
 8. Upload the ZIP file and turn the skill on.
@@ -100,13 +100,13 @@ Simplest option inside Claude Code:
 
 ```text
 /plugin marketplace add PMM-EMT/emt-skills-marketplace
-/plugin install emt-sop-generator-plugin@emt-skills-marketplace
+/plugin install emt-sop-generator@emt-skills-marketplace
 ```
 
 After installation, call the skill with its plugin name:
 
 ```text
-/emt-sop-generator-plugin:emt-sop-generator
+/emt-sop-generator:emt-sop-write
 ```
 
 If you prefer the full repository address:
@@ -131,27 +131,27 @@ For personal use across all projects:
 
 ```bash
 mkdir -p ~/.claude/skills
-cp -R plugins/emt-sop-generator-plugin/skills/emt-sop-generator ~/.claude/skills/
+cp -R plugins/emt-sop-generator/skills/emt-sop-write ~/.claude/skills/
 ```
 
 For one project only:
 
 ```bash
 mkdir -p /path/to/project/.claude/skills
-cp -R plugins/emt-sop-generator-plugin/skills/emt-sop-generator /path/to/project/.claude/skills/
+cp -R plugins/emt-sop-generator/skills/emt-sop-write /path/to/project/.claude/skills/
 ```
 
 Claude Code can use a skill automatically when your request matches the skill description. You can also ask for it by name, for example:
 
 ```text
-Use the emt-sop-generator skill to draft an EMT SOP.
+Use the emt-sop-write skill to draft an EMT SOP.
 ```
 
 For maintainers, validate the marketplace and plugin before release:
 
 ```bash
 claude plugin validate .
-claude plugin validate ./plugins/emt-sop-generator-plugin
+claude plugin validate ./plugins/emt-sop-generator
 ```
 
 The plugin uses a semantic version in `plugin.json`. Bump that version whenever releasing plugin changes so existing users receive updates.
