@@ -51,3 +51,27 @@ For each finding include:
 - correction.
 
 If no issue is found, state that no consistency issues were found and mention any limits caused by missing SOP sections or missing mission terminology.
+
+## Example Output Pattern
+
+For a non-English SOP, start with a compact term mapping table:
+
+| English glossary term | SOP-language term | Notes |
+| --- | --- | --- |
+| Clinical Lead | Kierownik kliniczny | Use this exact role label in all action steps. |
+| Referral Form | Formularz skierowania | Do not shorten to `form` when the specific record is required. |
+| EMTCC | EMTCC | Keep the official acronym and define it once. |
+
+Then report findings in the required structure:
+
+- Current wording: `medical personnel complete the referral paper`
+- Preferred defined term: `Clinical Lead completes the Referral Form`
+- Affected section or step: `Procedure description`, step 6
+- Why it matters operationally: the generic wording hides the responsible role and may cause staff to use the wrong record.
+- Correction: replace the sentence with `Clinical Lead completes the Referral Form and records the referral number in the Patient Register.`
+
+- Current wording: `Appendix B: Handover checklist` and later `handover form`
+- Preferred defined term: `Appendix B: Handover Checklist`
+- Affected section or step: `Appendices` and `Procedure description`, step 9
+- Why it matters operationally: casual renaming can make staff look for a different document during shift change.
+- Correction: use `Appendix B: Handover Checklist` everywhere.
