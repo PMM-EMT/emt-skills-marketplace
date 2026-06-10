@@ -1,9 +1,13 @@
 # Editor local state
 .vscode/
 
+# Codex local state
+.codex/
+
 # Tessl local files
 tessl.json
 .tessl/
+.tessl-plugin/
 tessl-output/
 tessl-report.*
 

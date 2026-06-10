@@ -40,6 +40,38 @@
         "UCPM",
         "Union Civil Protection Mechanism"
       ]
+    },
+    {
+      "name": "who-mds",
+      "source": "./plugins/who-mds",
+      "displayName": "WHO MDS",
+      "description": "Generate and review WHO EMT Minimum Data Set multi-day reports.",
+      "author": {
+        "name": "Bartlomiej Banachowicz (PMM EMT)",
+        "email": "bartlomiej.banachowicz@emt.pmm.org.pl"
+      },
+      "homepage": "https://github.com/PMM-EMT/emt-skills-marketplace",
+      "repository": "https://github.com/PMM-EMT/emt-skills-marketplace",
+      "license": "CC-BY-NC-SA-4.0",
+      "keywords": [
+        "WHO",
+        "EMT",
+        "MDS",
+        "Minimum Data Set",
+        "Emergency Medical Team",
+        "Periodic Report",
+        "Multi-day Report"
+      ],
+      "category": "Civil Protection",
+      "tags": [
+        "WHO",
+        "EMT",
+        "MDS",
+        "Minimum Data Set",
+        "Emergency Medical Team",
+        "Periodic Report",
+        "Multi-day Report"
+      ]
     }
   ]
 }
