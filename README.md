@@ -8,7 +8,33 @@ The skills here may be helpful for teams working within the **World Health Organ
 
 In simple terms: this is a shared library of practical AI helpers for people involved in emergency medical response.
 
-## 2. Terms of usage
+## 2. Available skills
+
+### `emt-sop-write`
+
+Drafts and revises Standard Operating Procedures (SOPs) for WHO Emergency Medical Teams, including Type 1 Mobile, Type 1 Fixed, Type 2, Type 3, and specialized care teams. It helps structure SOPs with required sections, role-bound procedures, capability limits, appendices, legal considerations, and field-ready wording.
+
+Example use case: ask the assistant to create a deployment SOP for Type 2 EMT pharmacy stock management, using your team's approved scope, local authorization, reporting lines, and required logs.
+
+### `emt-sop-readability-review`
+
+Reviews EMT SOPs for readability and field usability, especially for staff working while tired, interrupted, multilingual, or under time pressure. It can identify long sentences, dense paragraphs, vague wording, undefined acronyms, and, when requested, calculate a Flesch Reading Ease score.
+
+Example use case: ask the assistant to review a draft SOP and suggest clearer wording for sections that will be used during shift handover or surge operations.
+
+### `emt-sop-consistency-review`
+
+Checks whether an EMT SOP uses terms, role names, acronyms, forms, appendices, evidence artifacts, and escalation paths consistently throughout the document. It is useful for finding places where defined terms are renamed, translated inconsistently, or replaced with generic wording.
+
+Example use case: ask the assistant to check whether `Clinical Lead`, `Team Lead`, referral forms, incident logs, and appendix names are used consistently across a translated SOP.
+
+### `emt-sop-context-review`
+
+Reviews EMT SOPs against deployment context, EMT type, resources, coordination constraints, legal authorization, cultural fit, and likely field conditions. It helps identify unsafe assumptions, unrealistic dependencies, missing authorities, and operational gaps before an SOP is used in preparedness or response.
+
+Example use case: ask the assistant to critique a triage SOP for a Type 1 Mobile EMT working with unreliable communications, limited referral options, and host-country approval requirements.
+
+## 3. Terms of usage
 
 This marketplace is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](LICENCE.md).
 
@@ -23,7 +49,7 @@ Before using any skill in real operations:
 - Review the output before using it with patients, responders, authorities, or partners.
 - Treat AI-generated content as support material, not as a replacement for professional judgement or command responsibility.
 
-## 3. How to use it
+## 4. How to use it
 
 ### 👋 First: what is this?
 
