@@ -1,6 +1,6 @@
 {
   "name": "who-mds",
-  "description": "Adds skills for working with WHO EMT Minimum Data Set reports and multi-day MDS reporting outputs.",
+  "description": "Adds skills for summarizing WHO EMT Minimum Data Set CSV exports into Markdown and assembling multi-day MDS PDF reports.",
   "version": "0.1.0",
   "author": {
     "name": "Bartlomiej Banachowicz (PMM EMT)",
@@ -16,6 +16,9 @@
     "Minimum Data Set",
     "Emergency Medical Team",
     "Periodic Report",
-    "Multi-day Report"
+    "Multi-day Report",
+    "Markdown Summary",
+    "HTML Template",
+    "PDF Report"
   ]
 }

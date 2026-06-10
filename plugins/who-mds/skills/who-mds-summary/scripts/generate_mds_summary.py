@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""Generate a multi-day WHO EMT MDS periodic HTML report from daily CSV exports."""
+"""Generate a multi-day WHO EMT MDS summary Markdown file from daily CSV exports."""
 
 from __future__ import annotations
 
 import argparse
 import csv
-import html
-import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
@@ -16,7 +14,6 @@ from typing import Any
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 SKILL_DIR = SCRIPT_DIR.parent
-TEMPLATE_DIR = SKILL_DIR / "assets" / "html-report-templates"
 
 NO_DATA = "No data available for the selected reporting period."
 FIELD_MISSING = "Field not available in source data."
@@ -110,15 +107,14 @@ class SourceFile:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Generate a WHO EMT MDS periodic HTML report.")
+    parser = argparse.ArgumentParser(description="Generate a WHO EMT MDS summary Markdown file.")
     parser.add_argument("inputs", nargs="+", help="CSV files or directories containing CSV files.")
     parser.add_argument("--start-date", help="Inclusive report start date, YYYY-MM-DD.")
     parser.add_argument("--end-date", help="Inclusive report end date, YYYY-MM-DD.")
     parser.add_argument("--organization", help="Organization name override.")
     parser.add_argument("--team-name", help="Team name override.")
     parser.add_argument("--emt-type", default=FIELD_MISSING, help="EMT type or capability package.")
-    parser.add_argument("--output", default="who-emt-mds-periodic-report.html", help="Public HTML report path.")
-    parser.add_argument("--restricted-output", help="Restricted appendix HTML path.")
+    parser.add_argument("--output", default="who-emt-mds-summary.md", help="Generated summary Markdown path.")
     return parser.parse_args()
 
 
@@ -634,66 +630,82 @@ def build_assumptions() -> dict[str, str]:
     }
 
 
-def render_template(text: str, context: dict[str, Any]) -> str:
-    def section_repl(match: re.Match[str]) -> str:
-        name = match.group(1).strip()
-        body = match.group(2)
-        rows = context.get(name, [])
-        if not rows:
-            return ""
-        rendered = []
-        for row in rows:
-            merged = {**context, **row}
-            rendered.append(render_template(body, merged))
-        return "".join(rendered)
-
-    def inverted_repl(match: re.Match[str]) -> str:
-        name = match.group(1).strip()
-        body = match.group(2)
-        value = context.get(name)
-        return render_template(body, context) if not value else ""
-
-    def scalar_repl(match: re.Match[str]) -> str:
-        name = match.group(1).strip()
-        value = context.get(name, FIELD_MISSING)
-        return html.escape(str(value), quote=False)
-
-    text = re.sub(r"\{\{#([^}]+)\}\}(.*?)\{\{/\1\}\}", section_repl, text, flags=re.DOTALL)
-    text = re.sub(r"\{\{\^([^}]+)\}\}(.*?)\{\{/\1\}\}", inverted_repl, text, flags=re.DOTALL)
-    text = re.sub(r"\{\{([^#/^][^}]*)\}\}", scalar_repl, text)
-    return text
+SUMMARY_TABLES = {
+    "Main Findings": "main_findings",
+    "Trend Interpretation Notes": "trend_interpretation_notes",
+    "Daily Coverage": "daily_coverage_rows",
+    "Daily Consultations": "daily_consultation_rows",
+    "Daily Group Trends": "daily_group_trend_rows",
+    "Daily Breakdown": "daily_breakdown_rows",
+    "Facility Locations": "facility_location_rows",
+    "Source Data": "source_data_rows",
+    "Top Health Events": "top_health_event_rows",
+    "Top Event Trends": "top_event_trend_rows",
+    "Missing Or Excluded Rows": "missing_excluded_rows",
+    "Review Records": "review_record_rows",
+    "Daily Notes": "daily_note_rows",
+    "Detailed Comments": "detailed_comment_rows",
+    "Actions Required": "action_required_rows",
+    "Restricted Trigger Records": "restricted_record_rows",
+}
 
 
-def extract_page(html_text: str) -> str:
-    match = re.search(r"<section class=\"report-page.*?</section>", html_text, flags=re.DOTALL)
-    return match.group(0) if match else html_text
+def scalar_context(context: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in context.items() if not isinstance(value, list)}
 
 
-def render_report(context: dict[str, Any], include_restricted: bool) -> str:
-    stylesheet = (TEMPLATE_DIR / "styles.css").read_text(encoding="utf-8")
-    templates = [
-        "page01_cover_executive_summary.html",
-        "page02_reporting_coverage_operational_context.html",
-        "page03_demographic_statistics.html",
-        "page04_health_events_summary.html",
-        "page05_health_events_trends.html",
-        "page06_procedures_outcomes.html",
-        "page07_relation_protection.html",
-        "page08_needs_risks_operational_constraints.html",
-        "page09_data_quality_validation.html",
-        "appendix_a_daily_breakdown.html",
-        "appendix_b_full_mds_item_totals.html",
+def markdown_cell(value: Any) -> str:
+    text = str(value if value is not None else "")
+    return text.replace("|", "\\|").replace("\r\n", "<br>").replace("\n", "<br>").strip()
+
+
+def write_markdown_table(lines: list[str], rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        lines.append(NO_DATA)
+        lines.append("")
+        return
+    fieldnames = sorted({key for row in rows for key in row})
+    lines.append("| " + " | ".join(fieldnames) + " |")
+    lines.append("| " + " | ".join("---" for _ in fieldnames) + " |")
+    for row in rows:
+        lines.append("| " + " | ".join(markdown_cell(row.get(key, "")) for key in fieldnames) + " |")
+    lines.append("")
+
+
+def write_key_value_table(lines: list[str], values: dict[str, Any]) -> None:
+    lines.append("| Field | Value |")
+    lines.append("| --- | --- |")
+    for key in sorted(values):
+        lines.append(f"| {markdown_cell(key)} | {markdown_cell(values[key])} |")
+    lines.append("")
+
+
+def build_markdown_summary(context: dict[str, Any]) -> str:
+    metadata = scalar_context(context)
+    assumption_values = {
+        key: value
+        for key, value in metadata.items()
+        if key.endswith("_method") or key.endswith("_handling") or key == "outcome_notes"
+    }
+    lines = [
+        "# WHO EMT MDS Summary",
+        "",
+        "> Generated summary data for final WHO EMT MDS report preparation. Treat the restricted trigger section as confidential when it contains rows.",
+        "",
+        "## Metadata",
+        "",
     ]
-    if include_restricted:
-        templates = ["appendix_c_restricted_line_list_trigger_summary.html"]
-    pages = []
-    total_pages = len(templates)
-    for index, name in enumerate(templates, start=1):
-        page_context = {**context, "page_number": index, "total_pages": total_pages}
-        raw = (TEMPLATE_DIR / name).read_text(encoding="utf-8")
-        pages.append(render_template(extract_page(raw), page_context))
-    title = html.escape(str(context.get("report_title", "WHO EMT MDS Periodic Report")))
-    return f"<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\" />\n<title>{title}</title>\n<style>\n{stylesheet}\n</style>\n</head>\n<body>\n{''.join(pages)}\n</body>\n</html>\n"
+    write_key_value_table(lines, metadata)
+    lines.extend(["## Assumptions", ""])
+    write_key_value_table(lines, assumption_values)
+    for title, context_key in SUMMARY_TABLES.items():
+        rows = context.get(context_key, [])
+        lines.extend([f"## {title}", ""])
+        if context_key == "restricted_record_rows":
+            lines.append("> Confidential section. Do not include line-list trigger details in the public report.")
+            lines.append("")
+        write_markdown_table(lines, rows)
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def main() -> int:
@@ -708,14 +720,9 @@ def main() -> int:
     rows, sources, report_start, report_end = load_data(paths, start, end)
     context = build_context(rows, sources, report_start, report_end, args)
     output = Path(args.output)
-    output.write_text(render_report(context, include_restricted=False), encoding="utf-8")
-    print(f"Wrote public report: {output}")
-    if args.restricted_output:
-        restricted_output = Path(args.restricted_output)
-        restricted_output.write_text(render_report(context, include_restricted=True), encoding="utf-8")
-        print(f"Wrote restricted appendix: {restricted_output}")
-    elif context.get("restricted_record_rows"):
-        print("Restricted triggers detected. Re-run with --restricted-output to generate a separate restricted appendix.")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(build_markdown_summary(context), encoding="utf-8")
+    print(f"Wrote WHO MDS summary Markdown: {output}")
     return 0
 
 
