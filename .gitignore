@@ -1,0 +1,12 @@
+# Editor local state
+.vscode/
+
+# Tessl local files
+tessl.json
+.tessl/
+tessl-output/
+tessl-report.*
+
+# Python generated files
+__pycache__/
+*.py[cod]
