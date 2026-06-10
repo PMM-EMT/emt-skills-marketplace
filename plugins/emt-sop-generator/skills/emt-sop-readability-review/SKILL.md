@@ -1,6 +1,6 @@
 ---
 name: emt-sop-readability-review
-description: Review Emergency Medical Team SOP readability for field usability by tired, multilingual, interrupted, and time-pressured staff. Use when Claude needs to calculate supported language-specific readability scores, identify hard-to-read SOP sections, and suggest clearer field-ready wording.
+description: Review Emergency Medical Team SOPs or standard operating procedures for readability, plain language, reading level, simplification, and field usability by tired, multilingual, interrupted, and time-pressured staff. Use when Claude needs supported language-specific readability scores, Flesch or Flesch-Kincaid-style readability checks, hard-to-read section findings, or clearer field-ready wording.
 ---
 
 # EMT SOP Readability Review
@@ -9,13 +9,21 @@ description: Review Emergency Medical Team SOP readability for field usability b
 
 Review SOP readability for field usability. Focus on whether tired, multilingual, interrupted, time-pressured staff can scan and act on the SOP.
 
-Always read `references/language_agnostic_readability_rules.md` before reviewing an SOP for readability. Apply these generic rules for every SOP, regardless of SOP language and regardless of whether a language-specific scoring script is available.
-
-When the user asks for a readability score or quantitative readability check, first identify the SOP language. Use only the script for that language. If the SOP language is missing, mixed, or not listed below, do not run a scoring script because the result may be invalid; apply only the generic review rules.
+Always read `references/language_agnostic_readability_rules.md` before reviewing an SOP for readability. Apply these generic rules for every SOP, regardless of SOP language and regardless of whether a language-specific scoring script is available. Use quantitative scores as supporting signals, not final judgments.
 
 ## Reference Loading
 
 Read `references/language_agnostic_readability_rules.md` before every readability review. Use it to assess whether readers can find, understand, and use the SOP content, including purpose, main point placement, audience need, sentence length, paragraph length, headings, vocabulary, jargon control, actionability, cognitive load, terminology consistency, and comprehension checks.
+
+## Review Workflow
+
+1. Read `references/language_agnostic_readability_rules.md`.
+2. Identify the SOP language from the user request or SOP text. If the language is unknown, ask only when a score is required; otherwise continue with the generic review.
+3. If a quantitative score is requested, choose the matching script from the table below. If the language is unsupported, unknown, or substantially mixed-language, state that no validated script is available and do not calculate a score.
+4. Run the selected script using the file path or `--text` input. Keep the raw metrics available for the review.
+5. Validate the score before using it: check that the sentence, word, syllable, and letter counts are plausible for the supplied text. If a score is distorted by acronyms, medicine names, role names, legal terms, local place names, tables, or mixed-language content, report that limitation and rely more heavily on the generic rules.
+6. Apply the generic readability rules to identify exact problem locations, including section, step, full sentence, phrase, word, acronym, or term when possible.
+7. Produce a concise assessment with score results when valid, field-usability findings, and concrete rewrites that preserve legal, safety, clinical, scope, and evidence requirements.
 
 ## Language-Specific Scoring Scripts
 
@@ -51,17 +59,6 @@ Each script reports the algorithm score plus the input metrics needed for that f
 - average sentence length;
 - average syllables per word;
 - algorithm-specific percentages, when required.
-
-## Script Selection Rules
-
-- Use `scripts/flesch_reading_ease.py` only for English SOPs. Treat an English SOP as easy to read when its Flesch Reading Ease score is between `70.0` and `60.0` or above.
-- Use `scripts/wiener_sachtextformel_1.py` only for German SOPs.
-- Use `scripts/flesch_szigriszt.py` only for Spanish SOPs.
-- Use `scripts/gulpease_index.py` only for Italian SOPs.
-- Use `scripts/jasnopis_readability.py` only for Polish SOPs.
-- Use `scripts/kandel_moles.py` only for French SOPs.
-- If the SOP language is unsupported, unknown, or substantially mixed-language, state that no validated script is available for that language and do not calculate a score.
-- Use quantitative scores as signals, not final judgments. Syllable counting is heuristic and can be affected by acronyms, medicine names, role names, local place names, and legal terms.
 
 ## Review Rules
 
