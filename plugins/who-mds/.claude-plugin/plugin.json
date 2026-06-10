@@ -1,0 +1,21 @@
+{
+  "name": "who-mds",
+  "description": "Adds skills for working with WHO EMT Minimum Data Set reports and multi-day MDS reporting outputs.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Bartlomiej Banachowicz (PMM EMT)",
+    "email": "bartlomiej.banachowicz@emt.pmm.org.pl"
+  },
+  "homepage": "https://github.com/PMM-EMT/emt-skills-marketplace",
+  "repository": "https://github.com/PMM-EMT/emt-skills-marketplace",
+  "license": "CC-BY-NC-SA-4.0",
+  "keywords": [
+    "WHO",
+    "EMT",
+    "MDS",
+    "Minimum Data Set",
+    "Emergency Medical Team",
+    "Periodic Report",
+    "Multi-day Report"
+  ]
+}

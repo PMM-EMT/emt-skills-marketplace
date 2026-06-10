@@ -16,6 +16,7 @@ In simple terms: this is a shared library of practical AI helpers for people inv
 | `emt-sop-readability-review` | Reviews EMT SOPs for readability and field usability, especially for staff working while tired, interrupted, multilingual, or under time pressure. It can identify long sentences, dense paragraphs, vague wording, undefined acronyms, and, when requested, calculate a language-specific readability score for supported languages. | Ask the assistant to review a draft SOP and suggest clearer wording for sections that will be used during shift handover or surge operations. |
 | `emt-sop-consistency-review` | Checks whether an EMT SOP uses terms, role names, acronyms, forms, appendices, evidence artifacts, and escalation paths consistently throughout the document. It is useful for finding places where defined terms are renamed, translated inconsistently, or replaced with generic wording. | Ask the assistant to check whether `Clinical Lead`, `Team Lead`, referral forms, incident logs, and appendix names are used consistently across a translated SOP. |
 | `emt-sop-context-review` | Reviews EMT SOPs against deployment context, EMT type, resources, coordination constraints, legal authorization, cultural fit, and likely field conditions. It helps identify unsafe assumptions, unrealistic dependencies, missing authorities, and operational gaps before an SOP is used in preparedness or response. | Ask the assistant to critique a triage SOP for a Type 1 Mobile EMT working with unreliable communications, limited referral options, and host-country approval requirements. |
+| `multi-day-report` | Generates multi-day WHO EMT Minimum Data Set (MDS) periodic reports from one or more daily MDS CSV exports. It aggregates consultations, demographics, MDS health events, procedures, outcomes, relation-to-event, protection indicators, data-quality checks, and optional restricted-trigger appendices into the bundled A4 HTML report template. | Ask the assistant to create a weekly WHO EMT MDS report from a folder of daily MDS CSV files and generate a separate restricted appendix for protection or sensitive trigger items. |
 
 ## 3. Terms of usage
 
@@ -110,12 +111,14 @@ Simplest option inside Claude Code:
 ```text
 /plugin marketplace add PMM-EMT/emt-skills-marketplace
 /plugin install emt-sop-generator@emt-skills-marketplace
+/plugin install who-mds@emt-skills-marketplace
 ```
 
-After installation, call the skill with its plugin name:
+After installation, call a skill with its plugin name:
 
 ```text
 /emt-sop-generator:emt-sop-write
+/who-mds:multi-day-report
 ```
 
 If you prefer the full repository address:
