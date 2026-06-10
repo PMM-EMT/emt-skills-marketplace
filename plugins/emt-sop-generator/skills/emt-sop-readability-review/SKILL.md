@@ -9,7 +9,13 @@ description: Review Emergency Medical Team SOP readability for field usability b
 
 Review SOP readability for field usability. Focus on whether tired, multilingual, interrupted, time-pressured staff can scan and act on the SOP.
 
+Always read `references/language_agnostic_readability_rules.md` before reviewing an SOP for readability. Apply these generic rules for every SOP, regardless of SOP language and regardless of whether a language-specific scoring script is available.
+
 When the user asks for a readability score or quantitative readability check, first identify the SOP language. Use only the script for that language. If the SOP language is missing, mixed, or not listed below, do not run a scoring script because the result may be invalid; apply only the generic review rules.
+
+## Reference Loading
+
+Read `references/language_agnostic_readability_rules.md` before every readability review. Use it to assess whether readers can find, understand, and use the SOP content, including purpose, main point placement, audience need, sentence length, paragraph length, headings, vocabulary, jargon control, actionability, cognitive load, terminology consistency, and comprehension checks.
 
 ## Language-Specific Scoring Scripts
 
