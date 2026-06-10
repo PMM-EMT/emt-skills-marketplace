@@ -1,6 +1,6 @@
 ---
 name: emt-sop-context-review
-description: Review Emergency Medical Team SOPs against EMT type, mission context, available resources, unreliable field conditions, coordination constraints, international law, host-country authorization, and cultural fit. Use when Claude needs to critique whether an SOP is realistic, lawful, culturally aware, and operationally safe for a specific EMT deployment context.
+description: Review Emergency Medical Team SOPs or standard operating procedures against EMT type, WHO EMT classification, mission context, humanitarian deployment, disaster response, medical mission planning, available resources, unreliable field conditions, coordination constraints, international law, host-country authorization, and cultural fit. Use when Claude needs to critique whether an SOP is realistic, lawful, culturally aware, and operationally safe for a specific EMT deployment context.
 ---
 
 # EMT SOP Context Review
